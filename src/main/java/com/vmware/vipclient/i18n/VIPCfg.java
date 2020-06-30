@@ -56,6 +56,9 @@ public class VIPCfg {
     private String                     vipServer;
     private String                     i18nScope     = "numbers,dates,currencies,plurals,measurements";
 
+    private String                     gcli;
+    private String                     gcliBundle;
+
     // define key for cache management
     public static final String         CACHE_L3      = "CACHE_L3";
     public static final String         CACHE_L2      = "CACHE_L2";
@@ -158,6 +161,10 @@ public class VIPCfg {
         if (prop.containsKey("cacheExpiredTime"))
             this.cacheExpiredTime = Long.parseLong(prop
                     .getString("cacheExpiredTime"));
+        if (prop.containsKey("gcli"))
+            this.gcli = prop.getString("gcli");
+        if (prop.containsKey("gcliBundle"))
+            this.gcliBundle = prop.getString("gcliBundle");
     }
 
     /**
@@ -388,5 +395,23 @@ public class VIPCfg {
     public void setCachePath(String cachePath) {
         this.cachePath = cachePath;
     }
+
+
+    public String getGcli() {
+        return gcli;
+    }
+
+    public void setGcli(String gcli) {
+        this.gcli = gcli;
+    }
+
+    public String getGcliBundle() {
+        return gcliBundle;
+    }
+
+    public void setGcliBundle(String gcliBundle) {
+        this.gcliBundle = gcliBundle;
+    }
+
 
 }

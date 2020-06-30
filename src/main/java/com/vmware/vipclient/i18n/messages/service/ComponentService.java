@@ -18,6 +18,7 @@ import com.vmware.vipclient.i18n.base.cache.CacheMode;
 import com.vmware.vipclient.i18n.base.cache.persist.DiskCacheLoader;
 import com.vmware.vipclient.i18n.base.cache.persist.Loader;
 import com.vmware.vipclient.i18n.messages.api.opt.local.LocalMessagesOpt;
+import com.vmware.vipclient.i18n.messages.api.opt.local.CLIMessagesOpt;
 import com.vmware.vipclient.i18n.messages.api.opt.server.ComponentBasedOpt;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
 import com.vmware.vipclient.i18n.util.JSONUtils;
@@ -44,6 +45,8 @@ public class ComponentService {
             transMap = new ComponentBasedOpt(dto).getComponentMessages();
         } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.Bundle) {
             transMap = new LocalMessagesOpt(dto).getComponentMessages();
+        } else if (VIPCfg.getInstance().getMessageOrigin() == DataSourceEnum.CLI) {
+            transMap = new CLIMessagesOpt(dto).getComponentMessages();
         }
         return transMap;
     }
