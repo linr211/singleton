@@ -9,22 +9,20 @@ import com.vmware.vipclient.i18n.VIPCfg;
 import com.vmware.vipclient.i18n.base.DataSourceEnum;
 import com.vmware.vipclient.i18n.base.cache.FormattingCache;
 import com.vmware.vipclient.i18n.base.cache.MessageCache;
+import com.vmware.vipclient.i18n.base.instances.NumberFormatting;
 import com.vmware.vipclient.i18n.base.instances.TranslationMessage;
 import com.vmware.vipclient.i18n.exceptions.VIPClientInitException;
 import com.vmware.vipclient.i18n.messages.dto.MessagesDTO;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.util.Locale;
 import java.util.Map;
 
 public class GCLITest extends BaseTestClass {
     TranslationMessage translation;
     MessagesDTO        dto;
+    NumberFormatting numberFormatI18n;
 
     @Before
     public void init() {
@@ -42,6 +40,7 @@ public class GCLITest extends BaseTestClass {
         gc.createFormattingCache(FormattingCache.class);
         I18nFactory i18n = I18nFactory.getInstance(gc);
         translation = (TranslationMessage) i18n.getMessageInstance(TranslationMessage.class);
+        numberFormatI18n = (NumberFormatting) i18n.getFormattingInstance(NumberFormatting.class);
         dto = new MessagesDTO();
     }
 
@@ -54,4 +53,12 @@ public class GCLITest extends BaseTestClass {
         System.out.println(System.currentTimeMillis()-a);
     }
 
+    @Test
+    public void testRegionFormatPercent() {
+        double num1 = 0.354;
+        String frlanguage = "fr";
+        String frregion = "";
+        Assert.assertEquals("35 %", numberFormatI18n.formatPercent(num1,
+                frlanguage, frregion));
+    }
 }
