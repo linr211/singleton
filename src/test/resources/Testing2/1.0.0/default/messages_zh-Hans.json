@@ -1,0 +1,18 @@
+{
+     "Component": "default",
+     "Messages": {
+          "sim.addAnotherSolution": "添加另一个解决方案",
+          "sim.allVersions": "所有版本",
+          "sim.feedback.comments.error": "请输入评论",
+          "sim.feedback.name": "你的姓名",
+          "sim.feedback.submit": "提交",
+          "sim.feedback.title": "联系我们",
+          "sim.home": "主页",
+          "sim.incompatible": "不兼容的",
+          "sim.interoperability": "互用性",
+          "sim.upgradePath": "升级的路径",
+          "string.test.0314": "字串0314",
+          "string.test.0314。2": "第二个字串0314"
+     },
+     "Locale": "zh-Hans"
+}
