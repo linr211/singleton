@@ -56,15 +56,11 @@ public class GCLIPerformanceTest extends BaseTestClass {
         long b = System.currentTimeMillis();
         Map<String, String> m2 = translation.getStrings(Locale.forLanguageTag("zh-Hant"), "default");
         System.out.println(System.currentTimeMillis()-b);
+        VIPCfg.getInstance().getVipService().getHttpRequester().setBaseURL("https://g11n-vip-dev-1.eng.vmware.com:8090");
+        VIPCfg.getInstance().setMessageOrigin(DataSourceEnum.VIP);
+        long c = System.currentTimeMillis();
+        Map<String, String> m3 = translation.getStrings(Locale.forLanguageTag("ja"), "default");
+        System.out.println(System.currentTimeMillis()-c);
 
-    }
-
-   // @Test
-    public void testRegionFormatPercent() {
-        double num1 = 0.354;
-        String frlanguage = "fr";
-        String frregion = "";
-        Assert.assertEquals("35 %", numberFormatI18n.formatPercent(num1,
-                frlanguage, frregion));
     }
 }
